@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minist Jewelry</title>
+
+  <!-- Luxury Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* GLOBAL STYLES */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #faf7f4; color: #333; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    /* HEADER */
+    header { background: #1c1c1c; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    header h1 { margin: 0; letter-spacing: 3px; }
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .nav-item { position: relative; }
+    nav a { color: #fff; font-size: 15px; }
+
+    /* TOOLTIP */
+    .tooltip-box { display: none; position: absolute; top: 140%; left: 50%; transform: translateX(-50%); background: #1c1c1c; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 13px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 9999; width: auto; max-width: 90vw; word-wrap: break-word; }
+    .nav-item:hover .tooltip-box { display: block; }
+
+    /* HERO */
+    .hero { position: relative; display: flex; justify-content: center; align-items: center; min-height: 60vh; padding: 20px; background: #000; }
+    .hero img { width: 100%; height: auto; max-height: 80vh; border-radius: 14px; box-shadow: 0 25px 45px rgba(0,0,0,0.35); object-fit: cover; }
+    .hero-title { position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%); font-family: 'Playfair Display', serif; font-size: clamp(32px, 8vw, 96px); letter-spacing: clamp(2px, 1vw, 12px); color: rgba(255, 255, 255, 0.9); text-shadow: 0 10px 30px rgba(0,0,0,0.6); pointer-events: none; text-align: center; }
+    .hero-caption { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-family: 'Playfair Display', serif; font-size: clamp(14px, 4vw, 24px); color: rgba(255, 255, 255, 0.85); text-shadow: 0 5px 15px rgba(0,0,0,0.4); pointer-events: none; text-align: center; }
+
+    /* SECTION */
+    .section { padding: 60px 40px; max-width: 1200px; margin: auto; }
+    .section-title { display: flex; align-items: center; justify-content: center; margin-bottom: 40px; }
+    .section-title span { padding: 0 20px; font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 700; color: #333; }
+    .section-title::before, .section-title::after { content: ""; flex: 1; height: 2px; background: #ccc; }
+
+    /* PRODUCTS */
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .product { background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); padding: 20px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+    .product:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .product img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; }
+    .product h3 { margin: 15px 0 10px; font-family: 'Playfair Display', serif; }
+
+    /* SHOP BUTTON */
+    .shop-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #1c1c1c;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .shop-button:hover { background: #333; }
+
+    /* FOOTER */
+    footer { background: #1c1c1c; color: #fff; text-align: center; padding: 20px; margin-top: 60px; }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; gap: 15px; }
+      nav { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 15px; width: 100%; justify-content: flex-start; }
+      .nav-item { margin-left: 0; }
+      .tooltip-box { display: none; }
+      .section { padding: 40px 20px; }
+      .section-title span { font-size: 22px; }
+      .products { grid-template-columns: 1fr; gap: 20px; }
+      .hero-title { top: 20%; }
+      .hero-caption { top: 35%; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: clamp(24px, 12vw, 40px); }
+      .hero-caption { font-size: clamp(12px, 6vw, 18px); }
+      .product img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MINIST</h1>
+  <nav>
+    <a href="#">Home</a>
+    <div class="nav-item">
+      <a href="#">About</a>
+      <div class="tooltip-box">
+        Minist Jewelry is a celebration of timeless elegance and modern sophistication.
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#">Contact</a>
+      <div class="tooltip-box">Get in touch with us</div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="Pics/picc.jpeg" alt="Jewelry Image">
+  <div class="hero-title">MINIST</div>
+  <div class="hero-caption">Exquisite Jewelry for Every Moment</div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <span>Featured Collection</span>
+  </div>
+
+  <div class="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e">
+      <h3>Diamond Ring</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ1234" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Gold Necklace</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ5678" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <h3>Pearl Earrings</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ9101" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+      <h3>Charm Bracelet</h3>
+      <a href="https://www.youtube.com" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+  </div>
+  <br>
+    <div class="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e">
+      <h3>Diamond Ring</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ1234" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Gold Necklace</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ5678" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <h3>Pearl Earrings</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ9101" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+      <h3>Charm Bracelet</h3>
+      <a href="https://www.youtube.com" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+  </div>
+  <br>
+    <div class="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e">
+      <h3>Diamond Ring</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ1234" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Gold Necklace</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ5678" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <h3>Pearl Earrings</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ9101" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+      <h3>Charm Bracelet</h3>
+      <a href="https://www.youtube.com" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+  </div>
+  <br>
+    <div class="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e">
+      <h3>Diamond Ring</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ1234" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Gold Necklace</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ5678" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <h3>Pearl Earrings</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ9101" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+      <h3>Charm Bracelet</h3>
+      <a href="https://www.youtube.com" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+  </div>
+  <br>
+    <div class="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e">
+      <h3>Diamond Ring</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ1234" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Gold Necklace</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ5678" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <h3>Pearl Earrings</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ9101" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+      <h3>Charm Bracelet</h3>
+      <a href="https://www.youtube.com" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+  </div>
+  <br>
+    <div class="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e">
+      <h3>Diamond Ring</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ1234" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Gold Necklace</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ5678" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <h3>Pearl Earrings</h3>
+      <a href="https://www.amazon.com/dp/B09XYZ9101" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+      <h3>Charm Bracelet</h3>
+      <a href="https://www.youtube.com" target="_blank" class="shop-button">Shop from Amazon</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Minist Jewelry. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
